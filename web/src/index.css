@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background-color: #000;
+  /* No CSS smooth scrolling: Lenis owns the scroll position. */
+}
+
+body {
+  @apply bg-black text-mist-100 antialiased;
+}
+
+/* Only hide the native pointer while the ring cursor is actually mounted. */
+html[data-ring-cursor='true'],
+html[data-ring-cursor='true'] a,
+html[data-ring-cursor='true'] button {
+  cursor: none;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.28);
+}
+
+@layer components {
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+  }
+}
+
+/* Cursor-tracked border glow. The card's own handler writes --glow-x/--glow-y on pointer move. */
+.glow-card::before,
+.glow-card::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+}
+
+.glow-card::before {
+  inset: 0;
+  padding: 1px;
+  background: radial-gradient(
+    200px circle at var(--glow-x, 50%) var(--glow-y, 0%),
+    rgba(34, 211, 238, 0.65),
+    rgba(255, 255, 255, 0.1) 42%,
+    transparent 72%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.glow-card::after {
+  inset: 0;
+  /* Behind the card's text but above its own background. */
+  z-index: -1;
+  background: radial-gradient(
+    240px circle at var(--glow-x, 50%) var(--glow-y, 0%),
+    rgba(34, 211, 238, 0.1),
+    transparent 70%
+  );
+}
+
+.glow-card:hover::before,
+.glow-card:hover::after {
+  opacity: 1;
+}
+
+/* Motion is decoration: remove it entirely when the user asks for stillness. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

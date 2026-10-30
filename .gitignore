@@ -1,0 +1,89 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment and Secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+
+# Production and Build Artifacts
+dist/
+build/
+out/
+.next/
+.vite/
+*.tsbuildinfo
+
+# Playwright Test Artifacts and Browser Downloads
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.playwright/
+
+# Vitest and Test Coverage
+coverage/
+*.lcov
+
+# ReproFlow Recordings, Sessions, and Artifacts
+.reproflow/
+recordings/
+sessions/
+*.reproflow.zip
+
+# Databases, Cache, and Browser Profiles
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+indexeddb/
+browser-profiles/
+.cache/
+
+# Debug and Process Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor and IDE Files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.temp
+*~

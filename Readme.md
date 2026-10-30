@@ -703,9 +703,7 @@ Please report security vulnerabilities privately rather than opening public GitH
 
 ## License
 
-ReproFlow is intended to be released under the MIT License.
-
-Add a `LICENSE` file containing the appropriate copyright information before publishing.
+ReproFlow is released under the [MIT License](LICENSE).
 
 ---
 

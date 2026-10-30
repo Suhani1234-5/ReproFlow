@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "ReproFlow",
+  "version": "0.1.0",
+  "description": "Record once. Reproduce anywhere. Fix faster.",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "optional_host_permissions": ["https://api.github.com/*", "https://github.com/*"],
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "ReproFlow",
+    "default_popup": "src/popup/index.html"
+  }
+}
